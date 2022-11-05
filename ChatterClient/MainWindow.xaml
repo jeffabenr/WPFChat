@@ -8,7 +8,7 @@
         xmlns:converters="clr-namespace:ChatterClient.Converters"
         xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Chatter Client" Height="450" Width="625"  Background="WhiteSmoke" Icon="messenger-icon.ico">
+        Title="Chat Abner S2" Height="450" Width="625"  Background="WhiteSmoke" Icon="messenger-icon.ico" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
@@ -32,24 +32,24 @@
         <StackPanel Grid.Column="0" Grid.Row="0"
                     Grid.ColumnSpan="1" Grid.RowSpan="2"
                     Background="WhiteSmoke">
-            <Label>Username</Label>
+            <Label>Usuário</Label>
             <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" 
                      IsEnabled="{Binding ChatRoom.IsRunning, Converter={StaticResource InverseConverter}}"/>
-            <Label>IP Address</Label>
-            <TextBox Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}" 
+            <Label>Endereço IP</Label>
+            <TextBox Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"
                      IsEnabled="{Binding ChatRoom.IsRunning, Converter={StaticResource InverseConverter}}"/>
-            <Label>Port</Label>
-            <TextBox Text="{Binding Port, UpdateSourceTrigger=PropertyChanged}" 
+            <Label>Porta</Label>
+            <TextBox Text="{Binding Port, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"
                      IsEnabled="{Binding ChatRoom.IsRunning, Converter={StaticResource InverseConverter}}"/>
-            <Button Command="{Binding ConnectCommand}">Connect</Button>
-            <Button Command="{Binding DisconnectCommand}">Disconnect</Button>
+            <Button IsEnabled="{Binding ChatRoom.IsRunning, Converter={StaticResource InverseConverter}}" Command="{Binding ConnectCommand}">Conectar</Button>
+            <Button IsEnabled="{Binding ChatRoom.IsRunning}" Command="{Binding DisconnectCommand}">Desconectar</Button>
             <Label Content="{Binding ChatRoom.Status}" ContentStringFormat="Status: {0}"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="0" Grid.Row="3"
+        <StackPanel Grid.Column="0" Grid.Row="2"
                     Grid.ColumnSpan="1" Grid.RowSpan="1"
-                    Background="WhiteSmoke">
-            <Label>Username Color</Label>
+                    Background="WhiteSmoke" Margin="0,39,0,0">
+            <Label>Cor do Usuário</Label>
             <ComboBox SelectedItem="{Binding ColorCode}" SelectedIndex="0">
                 <ComboBox.Items>
                     <system:String>Black</system:String>
@@ -65,12 +65,19 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </StackPanel>
+        <DockPanel Grid.Column="1"
+                   Grid.ColumnSpan="1" Height="26" VerticalAlignment="Top">
+            <Label DockPanel.Dock="Top">Chat</Label>
 
+        </DockPanel>
         <ContentControl Grid.Column="1" Grid.Row="0"
-                   Grid.ColumnSpan="2" Grid.RowSpan="2">
+                   Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="0,26,0,34">
+
             <ContentControl.Content>
-                <ListView x:Name="chatList" ItemsSource="{Binding ChatRoom.Messages}" Margin="5"
+
+                <ListView x:Name="chatList" ItemsSource="{Binding ChatRoom.Messages}" Margin="5,5,5,5"
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
                     <ListView.ItemContainerStyle>
                         <Style TargetType="{x:Type ListBoxItem}">
                             <Setter Property="Template">
@@ -102,16 +109,16 @@
             </ContentControl.Content>
         </ContentControl>
 
-        <DockPanel Grid.Column="1" Grid.Row="3"
-                   Grid.ColumnSpan="2" Grid.RowSpan="1">
-            <TextBox Margin="5" Text="{Binding Message, UpdateSourceTrigger=PropertyChanged}" 
+        <DockPanel Grid.Column="1" Grid.Row="2"
+                   Grid.ColumnSpan="2" Grid.RowSpan="1" Margin="0,60,0,0">
+            <TextBox Margin="5" IsEnabled="{Binding ChatRoom.IsRunning}" Text="{Binding Message, UpdateSourceTrigger=PropertyChanged}" 
                      AcceptsReturn="False" KeyDown="MessageBox_KeyDown"
                      TextWrapping="Wrap"/>
         </DockPanel>
 
-        <DockPanel Grid.Column="3" Grid.Row="0"
-                   Grid.ColumnSpan="1" Grid.RowSpan="2">
-            <Label DockPanel.Dock="Top">Users Online</Label>
+        <DockPanel Grid.Column="2" Grid.Row="0"
+                   Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="153,0,0,34">
+            <Label DockPanel.Dock="Top">Usuários Online</Label>
             <ListView ItemsSource="{Binding ChatRoom.Users}" DockPanel.Dock="Bottom" Margin="5">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -124,21 +131,19 @@
             </ListView>
         </DockPanel>
 
-        <StackPanel Grid.Column="3" Grid.Row="3"
-                   Grid.ColumnSpan="1" Grid.RowSpan="1"
-                    VerticalAlignment="Bottom">
-            <Button Margin="5" Command="{Binding SendCommand}">Send</Button>
+        <StackPanel Grid.Column="2" Grid.Row="2"
+                   Grid.ColumnSpan="2" Grid.RowSpan="1"
+                    VerticalAlignment="Top" Height="40" Margin="153,60,0,0">
+            <Button Margin="5" IsEnabled="{Binding ChatRoom.IsRunning}" Command="{Binding SendCommand}" Height="30">Enviar</Button>
         </StackPanel>
 
         <DockPanel Grid.Column="1" Grid.Row="0"
                     Grid.ColumnSpan="3" Grid.RowSpan="3"
-                   Margin="5"
+                   Margin="4,6,5,2"
                     Background="#FFDEDEDE" Visibility="{Binding ChatRoom.IsRunning, Converter={StaticResource VisibilityConverter}}">
 
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Label FontSize="16" Foreground="#FF212121">
-                    Find a chat room to connect to!
-                </Label>
+                <Label FontSize="16" Foreground="#FF212121" Content="Encontre uma sala de bate-papo para se conectar!"/>
             </StackPanel>
         </DockPanel>
     </Grid>

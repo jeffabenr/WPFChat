@@ -15,14 +15,14 @@ namespace ChatterClient
 {
     public class MainWindowViewModel : BaseViewModel
     {
-        private string _username;
+        private string _username = "Coloque seu nome";
         public string Username
         {
             get { return _username; }
             set { OnPropertyChanged(ref _username, value); }
         }
 
-        private string _address;
+        private string _address = "26.92.190.247";
         public string Address
         {
             get { return _address; }
@@ -75,22 +75,22 @@ namespace ChatterClient
             ChatRoom = new ChatroomViewModel();
             int socketPort = 0;
             var validPort = int.TryParse(Port, out socketPort);
-
+           
             if (!validPort)
             {
-                DisplayError("Please provide a valid port.");
+                DisplayError("Forneça uma porta válida.");
                 return;
             }
-
+            //MessageBox.Show(Port);
             if (String.IsNullOrWhiteSpace(Address))
             {
-                DisplayError("Please provide a valid address.");
+                DisplayError("Forneça um endereço válido.");
                 return;
             }
 
             if (String.IsNullOrWhiteSpace(Username))
             {
-                DisplayError("Please provide a username.");
+                DisplayError("Forneça um nome de usuário.");
                 return;
             }
 
@@ -101,7 +101,7 @@ namespace ChatterClient
         private async Task Disconnect()
         {
             if (ChatRoom == null)
-                DisplayError("You are not connected to a server.");
+                DisplayError("Você não está conectado a um servidor.");
 
             await ChatRoom.Disconnect();
         }
@@ -109,7 +109,7 @@ namespace ChatterClient
         private async Task Send()
         {
             if (ChatRoom == null)
-                DisplayError("You are not connected to a server.");
+                DisplayError("Você não está conectado a um servidor.");
 
             await ChatRoom.Send(Username, Message, ColorCode);
             Message = string.Empty;
