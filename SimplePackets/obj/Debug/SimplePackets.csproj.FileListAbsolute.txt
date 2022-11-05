@@ -1,0 +1,6 @@
+C:\Users\Abner\Source\Repos\WPFChat\SimplePackets\bin\Debug\SimplePackets.dll
+C:\Users\Abner\Source\Repos\WPFChat\SimplePackets\bin\Debug\SimplePackets.pdb
+C:\Users\Abner\Source\Repos\WPFChat\SimplePackets\obj\Debug\SimplePackets.csproj.AssemblyReference.cache
+C:\Users\Abner\Source\Repos\WPFChat\SimplePackets\obj\Debug\SimplePackets.csproj.CoreCompileInputs.cache
+C:\Users\Abner\Source\Repos\WPFChat\SimplePackets\obj\Debug\SimplePackets.dll
+C:\Users\Abner\Source\Repos\WPFChat\SimplePackets\obj\Debug\SimplePackets.pdb
