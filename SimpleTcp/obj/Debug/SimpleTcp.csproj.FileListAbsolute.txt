@@ -1,0 +1,9 @@
+C:\Users\Abner\Source\Repos\WPFChat\SimpleTcp\bin\Debug\SimpleTcp.dll
+C:\Users\Abner\Source\Repos\WPFChat\SimpleTcp\bin\Debug\SimpleTcp.pdb
+C:\Users\Abner\Source\Repos\WPFChat\SimpleTcp\bin\Debug\SimplePackets.dll
+C:\Users\Abner\Source\Repos\WPFChat\SimpleTcp\bin\Debug\SimplePackets.pdb
+C:\Users\Abner\Source\Repos\WPFChat\SimpleTcp\obj\Debug\SimpleTcp.csproj.AssemblyReference.cache
+C:\Users\Abner\Source\Repos\WPFChat\SimpleTcp\obj\Debug\SimpleTcp.csproj.CoreCompileInputs.cache
+C:\Users\Abner\Source\Repos\WPFChat\SimpleTcp\obj\Debug\SimpleTcp.csproj.CopyComplete
+C:\Users\Abner\Source\Repos\WPFChat\SimpleTcp\obj\Debug\SimpleTcp.dll
+C:\Users\Abner\Source\Repos\WPFChat\SimpleTcp\obj\Debug\SimpleTcp.pdb
